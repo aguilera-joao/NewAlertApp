@@ -7,9 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A04494F1AE1DA030060D933 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A04494E1AE1DA030060D933 /* AppDelegate.m */; };
+		6A0449511AE1DA570060D933 /* ContactBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0449501AE1DA570060D933 /* ContactBaseTableViewController.m */; };
+		6A0449551AE1DA750060D933 /* ContactPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0449541AE1DA750060D933 /* ContactPerson.m */; };
+		6A0449581AE1DA880060D933 /* ContactDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0449571AE1DA880060D933 /* ContactDetailViewController.m */; };
+		6A04496E1AE1DA940060D933 /* ContactDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0449591AE1DA940060D933 /* ContactDetailViewController.xib */; };
+		6A04496F1AE1DA940060D933 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A04495B1AE1DA940060D933 /* ContactTableViewCell.m */; };
+		6A0449701AE1DA940060D933 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A04495C1AE1DA940060D933 /* ContactTableViewCell.xib */; };
+		6A0449711AE1DA940060D933 /* CustomUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A04495E1AE1DA940060D933 /* CustomUtility.m */; };
+		6A0449721AE1DA940060D933 /* EMContactMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0449601AE1DA940060D933 /* EMContactMainViewController.m */; };
+		6A0449731AE1DA940060D933 /* EMContactSelctViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0449621AE1DA940060D933 /* EMContactSelctViewController.m */; };
+		6A0449741AE1DA940060D933 /* HeadPhones.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0449641AE1DA940060D933 /* HeadPhones.m */; };
+		6A0449751AE1DA940060D933 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0449661AE1DA940060D933 /* MessageViewController.m */; };
+		6A0449761AE1DA940060D933 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0449671AE1DA940060D933 /* MessageViewController.xib */; };
+		6A0449771AE1DA940060D933 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0449691AE1DA940060D933 /* ResultsViewController.m */; };
+		6A0449781AE1DA940060D933 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A04496B1AE1DA940060D933 /* SettingsTableViewController.m */; };
+		6A0449791AE1DA940060D933 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A04496D1AE1DA940060D933 /* ViewController.m */; };
 		6A43A84C1AE1D2E800888E04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A43A84B1AE1D2E800888E04 /* main.m */; };
-		6A43A84F1AE1D2E800888E04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A43A84E1AE1D2E800888E04 /* AppDelegate.m */; };
-		6A43A8521AE1D2E800888E04 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A43A8511AE1D2E800888E04 /* ViewController.m */; };
 		6A43A8551AE1D2E800888E04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A43A8531AE1D2E800888E04 /* Main.storyboard */; };
 		6A43A8571AE1D2E800888E04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A43A8561AE1D2E800888E04 /* Images.xcassets */; };
 		6A43A85A1AE1D2E800888E04 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A43A8581AE1D2E800888E04 /* LaunchScreen.xib */; };
@@ -27,13 +41,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A04494D1AE1D9FC0060D933 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
+		6A04494E1AE1DA030060D933 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
+		6A0449501AE1DA570060D933 /* ContactBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactBaseTableViewController.m; path = ../ContactBaseTableViewController.m; sourceTree = "<group>"; };
+		6A0449521AE1DA610060D933 /* ContactBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ContactBaseTableViewController.h; path = ../ContactBaseTableViewController.h; sourceTree = "<group>"; };
+		6A0449531AE1DA750060D933 /* ContactPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactPerson.h; path = ../ContactPerson.h; sourceTree = "<group>"; };
+		6A0449541AE1DA750060D933 /* ContactPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactPerson.m; path = ../ContactPerson.m; sourceTree = "<group>"; };
+		6A0449561AE1DA880060D933 /* ContactDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactDetailViewController.h; path = ../ContactDetailViewController.h; sourceTree = "<group>"; };
+		6A0449571AE1DA880060D933 /* ContactDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactDetailViewController.m; path = ../ContactDetailViewController.m; sourceTree = "<group>"; };
+		6A0449591AE1DA940060D933 /* ContactDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactDetailViewController.xib; path = ../ContactDetailViewController.xib; sourceTree = "<group>"; };
+		6A04495A1AE1DA940060D933 /* ContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactTableViewCell.h; path = ../ContactTableViewCell.h; sourceTree = "<group>"; };
+		6A04495B1AE1DA940060D933 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactTableViewCell.m; path = ../ContactTableViewCell.m; sourceTree = "<group>"; };
+		6A04495C1AE1DA940060D933 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactTableViewCell.xib; path = ../ContactTableViewCell.xib; sourceTree = "<group>"; };
+		6A04495D1AE1DA940060D933 /* CustomUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomUtility.h; path = ../CustomUtility.h; sourceTree = "<group>"; };
+		6A04495E1AE1DA940060D933 /* CustomUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomUtility.m; path = ../CustomUtility.m; sourceTree = "<group>"; };
+		6A04495F1AE1DA940060D933 /* EMContactMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMContactMainViewController.h; path = ../EMContactMainViewController.h; sourceTree = "<group>"; };
+		6A0449601AE1DA940060D933 /* EMContactMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMContactMainViewController.m; path = ../EMContactMainViewController.m; sourceTree = "<group>"; };
+		6A0449611AE1DA940060D933 /* EMContactSelctViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMContactSelctViewController.h; path = ../EMContactSelctViewController.h; sourceTree = "<group>"; };
+		6A0449621AE1DA940060D933 /* EMContactSelctViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMContactSelctViewController.m; path = ../EMContactSelctViewController.m; sourceTree = "<group>"; };
+		6A0449631AE1DA940060D933 /* HeadPhones.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeadPhones.h; path = ../HeadPhones.h; sourceTree = "<group>"; };
+		6A0449641AE1DA940060D933 /* HeadPhones.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeadPhones.m; path = ../HeadPhones.m; sourceTree = "<group>"; };
+		6A0449651AE1DA940060D933 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageViewController.h; path = ../MessageViewController.h; sourceTree = "<group>"; };
+		6A0449661AE1DA940060D933 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageViewController.m; path = ../MessageViewController.m; sourceTree = "<group>"; };
+		6A0449671AE1DA940060D933 /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageViewController.xib; path = ../MessageViewController.xib; sourceTree = "<group>"; };
+		6A0449681AE1DA940060D933 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultsViewController.h; path = ../ResultsViewController.h; sourceTree = "<group>"; };
+		6A0449691AE1DA940060D933 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultsViewController.m; path = ../ResultsViewController.m; sourceTree = "<group>"; };
+		6A04496A1AE1DA940060D933 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTableViewController.h; path = ../SettingsTableViewController.h; sourceTree = "<group>"; };
+		6A04496B1AE1DA940060D933 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTableViewController.m; path = ../SettingsTableViewController.m; sourceTree = "<group>"; };
+		6A04496C1AE1DA940060D933 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../ViewController.h; sourceTree = "<group>"; };
+		6A04496D1AE1DA940060D933 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../ViewController.m; sourceTree = "<group>"; };
 		6A43A8461AE1D2E800888E04 /* NewAlertApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewAlertApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A43A84A1AE1D2E800888E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A43A84B1AE1D2E800888E04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6A43A84D1AE1D2E800888E04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6A43A84E1AE1D2E800888E04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6A43A8501AE1D2E800888E04 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6A43A8511AE1D2E800888E04 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6A43A8541AE1D2E800888E04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6A43A8561AE1D2E800888E04 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6A43A8591AE1D2E800888E04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -81,10 +120,35 @@
 		6A43A8481AE1D2E800888E04 /* NewAlertApp */ = {
 			isa = PBXGroup;
 			children = (
-				6A43A84D1AE1D2E800888E04 /* AppDelegate.h */,
-				6A43A84E1AE1D2E800888E04 /* AppDelegate.m */,
-				6A43A8501AE1D2E800888E04 /* ViewController.h */,
-				6A43A8511AE1D2E800888E04 /* ViewController.m */,
+				6A0449591AE1DA940060D933 /* ContactDetailViewController.xib */,
+				6A04495A1AE1DA940060D933 /* ContactTableViewCell.h */,
+				6A04495B1AE1DA940060D933 /* ContactTableViewCell.m */,
+				6A04495C1AE1DA940060D933 /* ContactTableViewCell.xib */,
+				6A04495D1AE1DA940060D933 /* CustomUtility.h */,
+				6A04495E1AE1DA940060D933 /* CustomUtility.m */,
+				6A04495F1AE1DA940060D933 /* EMContactMainViewController.h */,
+				6A0449601AE1DA940060D933 /* EMContactMainViewController.m */,
+				6A0449611AE1DA940060D933 /* EMContactSelctViewController.h */,
+				6A0449621AE1DA940060D933 /* EMContactSelctViewController.m */,
+				6A0449631AE1DA940060D933 /* HeadPhones.h */,
+				6A0449641AE1DA940060D933 /* HeadPhones.m */,
+				6A0449651AE1DA940060D933 /* MessageViewController.h */,
+				6A0449661AE1DA940060D933 /* MessageViewController.m */,
+				6A0449671AE1DA940060D933 /* MessageViewController.xib */,
+				6A0449681AE1DA940060D933 /* ResultsViewController.h */,
+				6A0449691AE1DA940060D933 /* ResultsViewController.m */,
+				6A04496A1AE1DA940060D933 /* SettingsTableViewController.h */,
+				6A04496B1AE1DA940060D933 /* SettingsTableViewController.m */,
+				6A04496C1AE1DA940060D933 /* ViewController.h */,
+				6A04496D1AE1DA940060D933 /* ViewController.m */,
+				6A0449561AE1DA880060D933 /* ContactDetailViewController.h */,
+				6A0449571AE1DA880060D933 /* ContactDetailViewController.m */,
+				6A0449531AE1DA750060D933 /* ContactPerson.h */,
+				6A0449541AE1DA750060D933 /* ContactPerson.m */,
+				6A04494D1AE1D9FC0060D933 /* AppDelegate.h */,
+				6A04494E1AE1DA030060D933 /* AppDelegate.m */,
+				6A0449521AE1DA610060D933 /* ContactBaseTableViewController.h */,
+				6A0449501AE1DA570060D933 /* ContactBaseTableViewController.m */,
 				6A43A8531AE1D2E800888E04 /* Main.storyboard */,
 				6A43A8561AE1D2E800888E04 /* Images.xcassets */,
 				6A43A8581AE1D2E800888E04 /* LaunchScreen.xib */,
@@ -201,6 +265,9 @@
 			files = (
 				6A43A8551AE1D2E800888E04 /* Main.storyboard in Resources */,
 				6A43A85A1AE1D2E800888E04 /* LaunchScreen.xib in Resources */,
+				6A0449761AE1DA940060D933 /* MessageViewController.xib in Resources */,
+				6A04496E1AE1DA940060D933 /* ContactDetailViewController.xib in Resources */,
+				6A0449701AE1DA940060D933 /* ContactTableViewCell.xib in Resources */,
 				6A43A8571AE1D2E800888E04 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,9 +286,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A43A8521AE1D2E800888E04 /* ViewController.m in Sources */,
-				6A43A84F1AE1D2E800888E04 /* AppDelegate.m in Sources */,
+				6A0449791AE1DA940060D933 /* ViewController.m in Sources */,
+				6A0449741AE1DA940060D933 /* HeadPhones.m in Sources */,
+				6A0449751AE1DA940060D933 /* MessageViewController.m in Sources */,
+				6A0449511AE1DA570060D933 /* ContactBaseTableViewController.m in Sources */,
+				6A0449771AE1DA940060D933 /* ResultsViewController.m in Sources */,
+				6A0449551AE1DA750060D933 /* ContactPerson.m in Sources */,
+				6A0449721AE1DA940060D933 /* EMContactMainViewController.m in Sources */,
+				6A04496F1AE1DA940060D933 /* ContactTableViewCell.m in Sources */,
+				6A04494F1AE1DA030060D933 /* AppDelegate.m in Sources */,
+				6A0449781AE1DA940060D933 /* SettingsTableViewController.m in Sources */,
 				6A43A84C1AE1D2E800888E04 /* main.m in Sources */,
+				6A0449731AE1DA940060D933 /* EMContactSelctViewController.m in Sources */,
+				6A0449711AE1DA940060D933 /* CustomUtility.m in Sources */,
+				6A0449581AE1DA880060D933 /* ContactDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +494,7 @@
 				6A43A86B1AE1D2E800888E04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6A43A86C1AE1D2E800888E04 /* Build configuration list for PBXNativeTarget "NewAlertAppTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +503,7 @@
 				6A43A86E1AE1D2E800888E04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
