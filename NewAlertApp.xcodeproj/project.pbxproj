@@ -120,35 +120,17 @@
 		6A43A8481AE1D2E800888E04 /* NewAlertApp */ = {
 			isa = PBXGroup;
 			children = (
+				6AB31EDB1AE1F6CA00D27BDF /* Util */,
+				6AB31ED91AE1F6AD00D27BDF /* Message */,
+				6AB31ED81AE1F69300D27BDF /* TableCell */,
+				6AB31ED71AE1F65900D27BDF /* ContactTable */,
 				6A0449591AE1DA940060D933 /* ContactDetailViewController.xib */,
-				6A04495A1AE1DA940060D933 /* ContactTableViewCell.h */,
-				6A04495B1AE1DA940060D933 /* ContactTableViewCell.m */,
-				6A04495C1AE1DA940060D933 /* ContactTableViewCell.xib */,
-				6A04495D1AE1DA940060D933 /* CustomUtility.h */,
-				6A04495E1AE1DA940060D933 /* CustomUtility.m */,
-				6A04495F1AE1DA940060D933 /* EMContactMainViewController.h */,
-				6A0449601AE1DA940060D933 /* EMContactMainViewController.m */,
-				6A0449611AE1DA940060D933 /* EMContactSelctViewController.h */,
-				6A0449621AE1DA940060D933 /* EMContactSelctViewController.m */,
-				6A0449631AE1DA940060D933 /* HeadPhones.h */,
-				6A0449641AE1DA940060D933 /* HeadPhones.m */,
-				6A0449651AE1DA940060D933 /* MessageViewController.h */,
-				6A0449661AE1DA940060D933 /* MessageViewController.m */,
-				6A0449671AE1DA940060D933 /* MessageViewController.xib */,
 				6A0449681AE1DA940060D933 /* ResultsViewController.h */,
 				6A0449691AE1DA940060D933 /* ResultsViewController.m */,
-				6A04496A1AE1DA940060D933 /* SettingsTableViewController.h */,
-				6A04496B1AE1DA940060D933 /* SettingsTableViewController.m */,
 				6A04496C1AE1DA940060D933 /* ViewController.h */,
 				6A04496D1AE1DA940060D933 /* ViewController.m */,
-				6A0449561AE1DA880060D933 /* ContactDetailViewController.h */,
-				6A0449571AE1DA880060D933 /* ContactDetailViewController.m */,
-				6A0449531AE1DA750060D933 /* ContactPerson.h */,
-				6A0449541AE1DA750060D933 /* ContactPerson.m */,
 				6A04494D1AE1D9FC0060D933 /* AppDelegate.h */,
 				6A04494E1AE1DA030060D933 /* AppDelegate.m */,
-				6A0449521AE1DA610060D933 /* ContactBaseTableViewController.h */,
-				6A0449501AE1DA570060D933 /* ContactBaseTableViewController.m */,
 				6A43A8531AE1D2E800888E04 /* Main.storyboard */,
 				6A43A8561AE1D2E800888E04 /* Images.xcassets */,
 				6A43A8581AE1D2E800888E04 /* LaunchScreen.xib */,
@@ -181,6 +163,56 @@
 				6A43A8641AE1D2E800888E04 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6AB31ED71AE1F65900D27BDF /* ContactTable */ = {
+			isa = PBXGroup;
+			children = (
+				6A04496A1AE1DA940060D933 /* SettingsTableViewController.h */,
+				6A04496B1AE1DA940060D933 /* SettingsTableViewController.m */,
+				6A04495F1AE1DA940060D933 /* EMContactMainViewController.h */,
+				6A0449601AE1DA940060D933 /* EMContactMainViewController.m */,
+				6A0449611AE1DA940060D933 /* EMContactSelctViewController.h */,
+				6A0449521AE1DA610060D933 /* ContactBaseTableViewController.h */,
+				6A0449501AE1DA570060D933 /* ContactBaseTableViewController.m */,
+				6A0449621AE1DA940060D933 /* EMContactSelctViewController.m */,
+				6A0449561AE1DA880060D933 /* ContactDetailViewController.h */,
+				6A0449571AE1DA880060D933 /* ContactDetailViewController.m */,
+			);
+			name = ContactTable;
+			sourceTree = "<group>";
+		};
+		6AB31ED81AE1F69300D27BDF /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				6A04495A1AE1DA940060D933 /* ContactTableViewCell.h */,
+				6A04495B1AE1DA940060D933 /* ContactTableViewCell.m */,
+				6A04495C1AE1DA940060D933 /* ContactTableViewCell.xib */,
+			);
+			name = TableCell;
+			sourceTree = "<group>";
+		};
+		6AB31ED91AE1F6AD00D27BDF /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				6A0449651AE1DA940060D933 /* MessageViewController.h */,
+				6A0449661AE1DA940060D933 /* MessageViewController.m */,
+				6A0449671AE1DA940060D933 /* MessageViewController.xib */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
+		6AB31EDB1AE1F6CA00D27BDF /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				6A04495D1AE1DA940060D933 /* CustomUtility.h */,
+				6A04495E1AE1DA940060D933 /* CustomUtility.m */,
+				6A0449631AE1DA940060D933 /* HeadPhones.h */,
+				6A0449531AE1DA750060D933 /* ContactPerson.h */,
+				6A0449541AE1DA750060D933 /* ContactPerson.m */,
+				6A0449641AE1DA940060D933 /* HeadPhones.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
