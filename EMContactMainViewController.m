@@ -355,7 +355,7 @@ static NSMutableOrderedSet *_currentSet;
       //  NSData *contactImageData = (__bridge NSData *)ABPersonCopyImageData((__bridge ABRecordRef)(person));
         NSArray *holdEachPersonMobileNumbers= (__bridge NSArray *)ABMultiValueCopyArrayOfAllValues(phoneNumbers);
         
-      ///  UIImage *img = [[UIImage alloc]initWithData:contactImageData];
+      //  UIImage *img = [[UIImage alloc]initWithData:contactImageData];
       //  UIImageView *contactPic = [[UIImageView alloc]initWithImage:img];
         
         ContactPerson *cp = [[ContactPerson alloc]initWithFirstName:(__bridge NSString *)(firstName) LastName:(__bridge NSString *)(lastName) andPhonNumbers:[NSMutableSet setWithArray:holdEachPersonMobileNumbers] andContactPicture:nil];

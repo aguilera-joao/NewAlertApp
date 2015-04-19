@@ -117,19 +117,19 @@ NSString *const kContactPictureKey = @"ContactPictureKey";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\D+" options:NSRegularExpressionCaseInsensitive error:&error];
     
     NSString* mobile=@"";
-       for (int i=0; i < temp.count; i++) {
-           
+    for (int i=0; i < temp.count; i++) {
+        
         mobile = [temp objectAtIndex:i];
      
-           NSString *modifiedString = [regex stringByReplacingMatchesInString:mobile options:0 range:NSMakeRange(0, mobile.length) withTemplate:@""];
+        NSString *modifiedString = [regex stringByReplacingMatchesInString:mobile options:0 range:NSMakeRange(0, mobile.length) withTemplate:@""];
            
-           NSLog(@"modified string is %@", modifiedString);
+        NSLog(@"modified string is %@", modifiedString);
  
      
-           NSNumber *num = [[NSNumber alloc]initWithInteger:[modifiedString integerValue]];
+        NSNumber *num = [[NSNumber alloc]initWithInteger:[modifiedString integerValue]];
      // NSLog(@"Phone number as NSInteger is %ld", (long)num);
      
-           [numbers addObject:num];
+        [numbers addObject:num];
            
       //     NSLog(@"Phone number as NSInteger is %ld", (long)num);
      
