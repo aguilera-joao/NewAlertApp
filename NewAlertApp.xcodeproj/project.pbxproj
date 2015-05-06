@@ -28,6 +28,8 @@
 		6A43A8571AE1D2E800888E04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A43A8561AE1D2E800888E04 /* Images.xcassets */; };
 		6A43A85A1AE1D2E800888E04 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A43A8581AE1D2E800888E04 /* LaunchScreen.xib */; };
 		6A43A8661AE1D2E800888E04 /* NewAlertAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A43A8651AE1D2E800888E04 /* NewAlertAppTests.m */; };
+		6AB87FB51AEB4BB7004B1B05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB87FB41AEB4BB7004B1B05 /* CoreLocation.framework */; };
+		6AB87FB71AEB4BBF004B1B05 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB87FB61AEB4BBF004B1B05 /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		6A43A85F1AE1D2E800888E04 /* NewAlertAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewAlertAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A43A8641AE1D2E800888E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A43A8651AE1D2E800888E04 /* NewAlertAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewAlertAppTests.m; sourceTree = "<group>"; };
+		6AB87FB41AEB4BB7004B1B05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6AB87FB61AEB4BBF004B1B05 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AB87FB71AEB4BBF004B1B05 /* AddressBook.framework in Frameworks */,
+				6AB87FB51AEB4BB7004B1B05 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +108,8 @@
 		6A43A83D1AE1D2E800888E04 = {
 			isa = PBXGroup;
 			children = (
+				6AB87FB61AEB4BBF004B1B05 /* AddressBook.framework */,
+				6AB87FB41AEB4BB7004B1B05 /* CoreLocation.framework */,
 				6A43A8481AE1D2E800888E04 /* NewAlertApp */,
 				6A43A8621AE1D2E800888E04 /* NewAlertAppTests */,
 				6A43A8471AE1D2E800888E04 /* Products */,

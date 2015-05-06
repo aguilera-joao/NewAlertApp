@@ -17,14 +17,18 @@
    AppDelegate *appDelegate;
 }
 @property (weak, nonatomic) IBOutlet UISwitch *switchState;
+@property (strong, nonatomic) CLGeocoder *myGeocoder;
+@property (strong, nonatomic) CLLocation *location;
+@property (strong, nonatomic) NSDictionary *info;
+@property (strong, nonatomic) NSNotificationCenter *country;
 
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
+   
     [super viewDidLoad];
-
 
     if([CLLocationManager locationServicesEnabled]) {
         
@@ -34,15 +38,55 @@
         [appDelegate.myLocationManager requestAlwaysAuthorization];
         [appDelegate.myLocationManager requestWhenInUseAuthorization];
         //[appDelegate.myLocationManager startUpdatingLocation];
+    } else {
+        
+        
+        [CustomUtility displayMessage:@"Location Services Disabled. Please activate location services to use the app"
+                            titleName:nil];
+        
     }
     
     NSLog(@"%@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+    
+    [self lazyInits];
+    
+    
 
+}
+/*! Intitlize all lazy inits that will load in viewDidLoad */
+-(void)lazyInits {
+    
+    if (!_myGeocoder) {
+        _myGeocoder = [[CLGeocoder alloc]init];
+    }
+    if (!_location) {
+        _location = [[CLLocation alloc]init];
+    }
+    
+    if (!_info) {
+        _info = [[NSDictionary alloc]init];
+    }
+    
+    if (!_country) {
+        _country = [NSNotificationCenter defaultCenter];
+        [_country addObserver:self selector:@selector(residingInCountry:) name:@"country" object:nil];
+    }
+    
+}
+
+-(void)residingInCountry:(NSNotification *)note {
+    
+    
+}
+
+-(NSString *)countryInWhichUserResidesIn {
+
+    return nil;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
       
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         while (true) {
 
@@ -61,7 +105,35 @@
         }
     
     });
+     */
     
+    updateInterfaceThatNeedsConstantUpdatingCheckingWithoutDeadLocking(^{
+        
+        BOOL status = [CustomUtility checkHeadPhoneStatus];
+        
+        if (status == NO) {
+            _switchState.enabled = NO;
+        }  else {
+            
+            _switchState.enabled = YES;
+        }
+        
+    });
+    
+}
+
+void updateInterfaceThatNeedsConstantUpdatingCheckingWithoutDeadLocking(void (^block)(void)){
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        while (true) {
+            
+            runOnMainQueueWithoutDeadlocking(^ {
+                
+                block();
+            });
+        }
+    });
 }
 
 void runOnMainQueueWithoutDeadlocking(void (^block)(void))
@@ -91,15 +163,14 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))
         NSLog(@"it is on");
         isItOn = YES;
         self.alarmStatus.text = @"Alarm is on";
-       // [appDelegate.myLocationManager startUpdatingLocation];
-        
-    
+        [appDelegate.myLocationManager startUpdatingLocation];
         self.alarmStatus.textColor = [UIColor greenColor];
+        
     } else {
         
         NSLog(@"it is off");
         isItOn = NO;
-     //   [appDelegate.myLocationManager stopUpdatingLocation];
+        [appDelegate.myLocationManager stopUpdatingLocation];
         self.alarmStatus.text = @"Alarm is off";
         self.alarmStatus.textColor = [UIColor redColor];
     }
@@ -107,6 +178,8 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))
     NSNumber *num = [[NSNumber alloc]initWithBool:isItOn];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:@"listening" object:num];
+    
+    //[nc postNotificationName:@"listening" object:@"US"];
     
 }
 

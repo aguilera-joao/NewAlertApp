@@ -52,4 +52,12 @@
     return [self isHeadSetPluggedIn];
 }
 
++(void) displayMessage:(NSString *)paramMessage titleName:(NSString *)title {
+    [[[UIAlertView alloc] initWithTitle:title
+                                message:paramMessage
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
+}
+
 @end

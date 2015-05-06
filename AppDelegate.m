@@ -35,7 +35,7 @@
 -(NSString *)createAPIKeyForNumber:(NSString *)num withMessage:(NSString *)msg{
     
     NSString *key = [NSString stringWithFormat:
-                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=12342491634&to=%@&text=Help+ME+Please", num];
+                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=45609946244083&to=%@&text=Help+ME+Please", num];
     return key;
 }
 
@@ -53,9 +53,8 @@
 
         self.myLocationManager.delegate = self;
     }
-    
-    
-    numbers = [[NSMutableArray alloc]initWithObjects:@"13104986862", @"18054608210", nil];
+ 
+  //  numbers = [[NSMutableArray alloc]initWithObjects:@"13104986862", @"18054608210", nil];
     
     return YES;
 }
@@ -214,8 +213,10 @@
     NSLog(@"Name: %@",name);
     
     isListening = [poster boolValue];
+    NSString *bl =[poster stringValue];
     
     NSLog(@"is device listening? : %i", isListening);
+    NSLog(@"Country name: %@", bl);
     
     
 }

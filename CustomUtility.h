@@ -14,4 +14,5 @@
 +(NSString *)contactDataFileLocation;
 +(void)sortContactList:(NSMutableOrderedSet *)list;
 +(BOOL)checkHeadPhoneStatus;
++(void) displayMessage:(NSString *)paramMessage titleName:(NSString *)title;
 @end
