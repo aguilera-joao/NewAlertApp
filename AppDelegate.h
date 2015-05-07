@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) CLLocationManager *myLocationManager;
 @property (nonatomic, strong) CLLocation *currentLocation;
+@property (nonatomic, strong) CLGeocoder *myGeocoder;
 
 @end
 

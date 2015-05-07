@@ -27,6 +27,8 @@
     BOOL isListening;
     BOOL _fileExists;
     NSMutableArray *numbers;
+    NSString *_address;
+    NSString *_country;
     
 }
 
@@ -50,7 +52,7 @@
 -(NSString *)createAPIKeyForNumber:(NSString *)num withMessage:(NSString *)msg{
     
     NSString *key = [NSString stringWithFormat:
-                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=12342491634&to=%@&text=%@", num, msg];
+                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=45609946244083&to=%@&text=%@", num, msg];
     return key;
 }
 
@@ -150,9 +152,11 @@
                         
                         NSString *phoneNumberAsString =  [num stringValue];
                         
+                       // NSString *currAdd = [self returnMeaningfulAddress];
+                        
                         NSLog(@"Phone number is %@", phoneNumberAsString);
                         
-                        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:[self createCustomMessage:@"My custom message"]]];
+                        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:[self createCustomMessage:_address]]];
                         NSURLRequest *myRequest = [NSURLRequest requestWithURL:qr];
                         
                         NSLog(@"URL is %@", myRequest);
@@ -215,9 +219,59 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     
+    
+    if (!_currentLocation) {
+        _currentLocation = [[CLLocation alloc]init];
+    }
+    
+    if (!_myGeocoder) {
+        _myGeocoder = [[CLGeocoder alloc]init];
+    }
+    
+    
     self.currentLocation = [locations lastObject];
     NSLog(@"You are at: %f %f", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
-}
+    
+    
+    NSLog(@"My current: %@", _currentLocation);
+    
+  [self.myGeocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray *placemarks, NSError *error){
+        
+        NSLog(@"Hello block!!!");
+        
+        
+        if (error == nil && placemarks.count > 0) {
+            
+            CLPlacemark *placemark = placemarks[0];
+            
+            _address = [[NSString alloc]initWithFormat:@"%@ %@ %@",placemark.name, placemark.locality, placemark.postalCode];
+            
+            if (!_address) {
+                _address = [[NSString alloc]initWithFormat:@"%@ %@ %@",placemark.name, placemark.locality, placemark.postalCode];
+                NSLog(@"Address is (inside block) %@", _address);
+            }
+            
+            else {
+                
+                _address = [NSString stringWithFormat:@"%@ %@ %@",placemark.name, placemark.locality, placemark.postalCode];
+                NSLog(@"Address is (inside block) %@", _address);
+            }
+            
+            _country = placemark.country;
+            
+        }  else if (error == nil && placemarks.count == 0){
+            NSLog(@"No results were returned.");
+        }
+        else if (error != nil){
+            NSLog(@"An error occurred = %@", error);
+        }
+        
+        NSLog(@"Address is (inside block) %@", _address);
+        
+    }];
+
+    
+  }
 
 
 -(void)appIsListening:(NSNotification *)note {
@@ -233,6 +287,57 @@
     NSLog(@"is device listening? : %i", isListening);
     NSLog(@"Country name: %@", bl);
     
+}
+
+-(NSString *)returnMeaningfulAddress {
+
+   // __block NSString *address = @"";
     
+    if (!_currentLocation) {
+        _currentLocation = [[CLLocation alloc]init];
+    }
+    
+    if (!_myGeocoder) {
+        _myGeocoder = [[CLGeocoder alloc]init];
+    }
+   
+    NSLog(@"My current: %@", _currentLocation);
+    
+    [self.myGeocoder reverseGeocodeLocation:self.currentLocation completionHandler:^(NSArray *placemarks, NSError *error){
+        
+        NSLog(@"Hello block!!!");
+        
+        
+        if (error == nil && placemarks.count > 0) {
+            
+            CLPlacemark *placemark = placemarks[0];
+            
+            _address = [[NSString alloc]initWithFormat:@"%@ %@ %@",placemark.name, placemark.locality, placemark.postalCode];
+            
+            if (!_address) {
+                _address = [[NSString alloc]initWithFormat:@"%@ %@ %@",placemark.name, placemark.locality, placemark.postalCode];
+                 NSLog(@"Address is (inside block) %@", _address);
+            }
+            
+            else {
+                
+                _address = [NSString stringWithFormat:@"%@ %@ %@",placemark.name, placemark.locality, placemark.postalCode];
+                 NSLog(@"Address is (inside block) %@", _address);
+            }
+            
+           
+        }  else if (error == nil && placemarks.count == 0){
+            NSLog(@"No results were returned.");
+        }
+        else if (error != nil){
+            NSLog(@"An error occurred = %@", error);
+        }
+        
+          NSLog(@"Address is (inside block) %@", _address);
+        
+    }];
+    
+    NSLog(@"Address is %@", _address);
+    return _address;
 }
 @end

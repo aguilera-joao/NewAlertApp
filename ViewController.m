@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSDictionary *info;
 @property (strong, nonatomic) NSNotificationCenter *country;
 
+
 @end
 
 @implementation ViewController
@@ -50,6 +51,23 @@
     
     [self lazyInits];
     
+    // NSUserDefaults *boolUserDefaults = [NSUserDefaults standardUserDefaults];
+    
+    BOOL currentState = [[NSUserDefaults standardUserDefaults] boolForKey:@"state"];
+    
+    NSLog(@"Current state is %i", currentState);
+    
+  
+    [_switchState setOn:currentState];
+    
+    if (currentState == YES) {
+        self.alarmStatus.text = @"Alarm is on";
+        self.alarmStatus.textColor = [UIColor greenColor];
+    } else {
+        
+        self.alarmStatus.text = @"Alarm is off";
+        self.alarmStatus.textColor = [UIColor redColor];
+    }
     
 
 }
@@ -166,6 +184,7 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))
         NSLog(@"it is on");
         isItOn = YES;
         self.alarmStatus.text = @"Alarm is on";
+        
         [appDelegate.myLocationManager startUpdatingLocation];
         self.alarmStatus.textColor = [UIColor greenColor];
         
@@ -176,7 +195,16 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))
         [appDelegate.myLocationManager stopUpdatingLocation];
         self.alarmStatus.text = @"Alarm is off";
         self.alarmStatus.textColor = [UIColor redColor];
+        //appDelegate.myLocationManager = nil;
+        
+        [appDelegate.myLocationManager stopUpdatingLocation];
+        [appDelegate.myLocationManager stopMonitoringSignificantLocationChanges];
+        [appDelegate.myLocationManager stopUpdatingHeading];
     }
+    
+    NSUserDefaults *boolUserDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [boolUserDefaults setObject:[NSNumber numberWithBool:isItOn] forKey:@"state"];
     
     NSNumber *num = [[NSNumber alloc]initWithBool:isItOn];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
