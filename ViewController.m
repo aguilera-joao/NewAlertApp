@@ -76,6 +76,9 @@
 
 -(void)residingInCountry:(NSNotification *)note {
     
+    //id poster = [note object];
+    //NSString *name = [note name];
+   // NSLog(@"Poster (VC): %@", poster);
     
 }
 

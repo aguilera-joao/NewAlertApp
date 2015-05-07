@@ -10,6 +10,8 @@
 #import "HeadPhones.h"
 #import "CustomUtility.h"
 #import "ContactPerson.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 
 
@@ -32,10 +34,23 @@
 
 @implementation AppDelegate
 
+-(NSString *)createCustomMessage:(NSString *)message {
+    
+    NSError *error = [[NSError alloc]init];
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\s" options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    
+    NSString *modifiedString = [regex stringByReplacingMatchesInString:message options:0 range:NSMakeRange(0, message.length) withTemplate:@"+"];
+    
+    return modifiedString;
+    
+}
+
 -(NSString *)createAPIKeyForNumber:(NSString *)num withMessage:(NSString *)msg{
     
     NSString *key = [NSString stringWithFormat:
-                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=45609946244083&to=%@&text=Help+ME+Please", num];
+                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=12342491634&to=%@&text=%@", num, msg];
     return key;
 }
 
@@ -55,7 +70,7 @@
     }
  
   //  numbers = [[NSMutableArray alloc]initWithObjects:@"13104986862", @"18054608210", nil];
-    
+    [Fabric with:@[CrashlyticsKit]];
     return YES;
 }
 
@@ -137,7 +152,7 @@
                         
                         NSLog(@"Phone number is %@", phoneNumberAsString);
                         
-                        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:nil]];
+                        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:[self createCustomMessage:@"My custom message"]]];
                         NSURLRequest *myRequest = [NSURLRequest requestWithURL:qr];
                         
                         NSLog(@"URL is %@", myRequest);
@@ -220,24 +235,4 @@
     
     
 }
-
--(void)sendTxt{
-   
-    NSString *callString = @"";
-    
-    NSURL *restURL = [NSURL URLWithString:kNexmo_APIKEY];
-    
-    NSURLRequest *restquest = [NSURLRequest requestWithURL:restURL];
-    
-    NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:restquest delegate:self];
-
-}
-
-
-
-
-
-
-
-
 @end
