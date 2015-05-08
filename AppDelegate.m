@@ -20,6 +20,8 @@
 #define knexmo_password
 #define kNexmo_APIKEY @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=12342491634&to=13104986862&text=Help+ME+Please"
 
+NSString *numberUS = @"12342491634";
+NSString *numberDenmark = @"45609946244083";
 
 @interface AppDelegate () {
     
@@ -51,8 +53,18 @@
 
 -(NSString *)createAPIKeyForNumber:(NSString *)num withMessage:(NSString *)msg{
     
+    NSString *kNum = nil;
+    
+    if ([_country isEqualToString:@"United States"]) {
+        
+        kNum = [NSString stringWithString:numberUS];
+    } else {
+        
+        kNum = [NSString stringWithString:numberDenmark];
+    }
+    
     NSString *key = [NSString stringWithFormat:
-                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=12342491634q&to=%@&text=%@", num, msg];
+                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=%@&to=%@&text=%@", kNum, num, msg];
     return key;
 }
 
@@ -249,6 +261,7 @@
             if (!_address) {
                 _address = [[NSString alloc]initWithFormat:@"%@ %@ %@",placemark.name, placemark.locality, placemark.postalCode];
                 NSLog(@"Address is (inside block) %@", _address);
+    
             }
             
             else {
@@ -258,6 +271,7 @@
             }
             
             _country = placemark.country;
+            NSLog(@"Country is %@", _country);
             
         }  else if (error == nil && placemarks.count == 0){
             NSLog(@"No results were returned.");
