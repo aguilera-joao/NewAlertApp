@@ -52,7 +52,7 @@
 -(NSString *)createAPIKeyForNumber:(NSString *)num withMessage:(NSString *)msg{
     
     NSString *key = [NSString stringWithFormat:
-                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=45609946244083&to=%@&text=%@", num, msg];
+                     @"https://rest.nexmo.com/sms/json?api_key=5fcd25b4&api_secret=2af3d933&from=12342491634q&to=%@&text=%@", num, msg];
     return key;
 }
 

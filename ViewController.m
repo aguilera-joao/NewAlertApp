@@ -31,20 +31,43 @@
    
     [super viewDidLoad];
 
+    
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    NSLog(@"Authorization status %d", status);
+    
     if([CLLocationManager locationServicesEnabled]) {
         
         appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         
         //request permission
         [appDelegate.myLocationManager requestAlwaysAuthorization];
-        [appDelegate.myLocationManager requestWhenInUseAuthorization];
+        // [appDelegate.myLocationManager requestWhenInUseAuthorization];
         //[appDelegate.myLocationManager startUpdatingLocation];
-    } else {
+    } else if (![CLLocationManager locationServicesEnabled]) {
         
         
         [CustomUtility displayMessage:@"Location Services Disabled. Please activate location services to use the app"
                             titleName:nil];
+    }
+    
+    if (!([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways)) {
         
+        
+        NSLog(@"Permission Denied");
+        
+        //appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+        //request permission
+        //[appDelegate.myLocationManager requestAlwaysAuthorization];
+     //   [appDelegate.myLocationManager requestWhenInUseAuthorization];
+      NSString  *title = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location is not enabled";
+        NSString *message = @"To use background location you must turn on 'Always' in the Location Services Settings";
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                            message:message
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Settings", nil];
+        [alertView show];
+
     }
     
     NSLog(@"%@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
@@ -63,6 +86,7 @@
     if (currentState == YES) {
         self.alarmStatus.text = @"Alarm is on";
         self.alarmStatus.textColor = [UIColor greenColor];
+        
     } else {
         
         self.alarmStatus.text = @"Alarm is off";
@@ -71,6 +95,17 @@
     
 
 }
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        // Send the user to the Settings for this app
+        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:settingsURL];
+    }
+}
+
+
 /*! Intitlize all lazy inits that will load in viewDidLoad */
 -(void)lazyInits {
     
