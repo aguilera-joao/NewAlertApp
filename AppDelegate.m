@@ -109,9 +109,9 @@ NSString *numberDenmark = @"45609946244083";
         NSLog(@"File exists");
     }
     
-   __block NSURL *restURL = [NSURL URLWithString:kNexmo_APIKEY];
+  // __block NSURL *restURL = [NSURL URLWithString:kNexmo_APIKEY];
     
-    NSURLRequest *restquest = [NSURLRequest requestWithURL:restURL];
+  //  NSURLRequest *restquest = [NSURLRequest requestWithURL:restURL];
     
     // NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:restquest delegate:self];
    // NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:restquest delegate:self startImmediately:NO];
@@ -300,6 +300,62 @@ NSString *numberDenmark = @"45609946244083";
     
     NSLog(@"is device listening? : %i", isListening);
     NSLog(@"Country name: %@", bl);
+    
+}
+
+-(void)sendEmergencyRequest {
+    
+    NSMutableOrderedSet *emergencyContacts = [[NSMutableOrderedSet alloc]init];
+    
+    _fileExists = [[NSFileManager defaultManager]fileExistsAtPath:[CustomUtility contactDataFileLocation]];
+    
+    if (_fileExists) {
+        emergencyContacts = [NSKeyedUnarchiver unarchiveObjectWithFile:[CustomUtility contactDataFileLocation]];
+    } else {
+        
+        NSLog(@"File exists");
+    }
+    
+    NSOperationQueue *q = [[NSOperationQueue alloc]init];
+    
+    for (int i = 0; i < [emergencyContacts count]; i++){
+        
+        
+        ContactPerson *person = [emergencyContacts objectAtIndex:i];
+        
+        NSArray *arrNum = [person phoneNumberArray];
+        
+        NSLog(@"Numbers are %@", arrNum);
+        
+        NSNumber *num = [arrNum objectAtIndex:0];
+        
+        NSString *phoneNumberAsString =  [num stringValue];
+        
+        // NSString *currAdd = [self returnMeaningfulAddress];
+        
+        NSLog(@"Phone number is %@", phoneNumberAsString);
+        
+        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:[self createCustomMessage:_address]]];
+        NSURLRequest *myRequest = [NSURLRequest requestWithURL:qr];
+        
+        NSLog(@"URL is %@", myRequest);
+        
+       [NSURLConnection sendAsynchronousRequest:myRequest queue:q completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            
+            //NSLog(@"Hello asnch");
+            //more code goes here
+            NSLog(@"%@",response.description);
+            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+            NSLog(@"%@",jsonObject);
+        }
+         
+         ];
+        //so the nexmo api doesn't complain
+        
+        [NSThread sleepForTimeInterval:7];
+    }
+
     
 }
 

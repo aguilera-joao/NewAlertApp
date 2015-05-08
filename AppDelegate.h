@@ -19,5 +19,8 @@
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) CLGeocoder *myGeocoder;
 
+
+-(void)sendEmergencyRequest;
+
 @end
 

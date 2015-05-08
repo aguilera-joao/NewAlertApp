@@ -21,6 +21,7 @@
 @property (strong, nonatomic) CLLocation *location;
 @property (strong, nonatomic) NSDictionary *info;
 @property (strong, nonatomic) NSNotificationCenter *country;
+@property (assign, atomic) BOOL isItOn;
 
 
 @end
@@ -93,8 +94,62 @@
         self.alarmStatus.textColor = [UIColor redColor];
     }
     
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSLog(@"Emeregency block from VC");
+        
+        while (true) {
+            
+            
+            //NSLog(@"This is going to be long...");
+            BOOL headPhoneStatus = [CustomUtility checkHeadPhoneStatus];
+            
+            if (headPhoneStatus == NO && currentState) {
+                
+                NSLog(@"Hello emer from VC");
+                
+                [appDelegate sendEmergencyRequest];
+                break;
+                
+            }
+            
+            
+            
+            
+        }
+    });
+
+    
 
 }
+
+/*-(void)alarmEvent {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        while (true) {
+            
+            
+           BOOL headPhoneStatus = [CustomUtility checkHeadPhoneStatus];
+            
+            if (headPhoneStatus == NO && _isItOn == YES) {
+                
+                [appDelegate sendEmergencyRequest];
+                
+                
+            }
+            
+            break;
+
+            
+        }
+    });
+
+    
+    
+    [CustomUtility checkHeadPhoneStatus];
+} */
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -215,11 +270,11 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))
 
 - (IBAction)alarm:(UISwitch *)sender {
     
-    BOOL isItOn;
+  
     
     if (sender.isOn) {
         NSLog(@"it is on");
-        isItOn = YES;
+        _isItOn = YES;
         self.alarmStatus.text = @"Alarm is on";
         
         [appDelegate.myLocationManager startUpdatingLocation];
@@ -228,7 +283,7 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))
     } else {
         
         NSLog(@"it is off");
-        isItOn = NO;
+        _isItOn = NO;
         [appDelegate.myLocationManager stopUpdatingLocation];
         self.alarmStatus.text = @"Alarm is off";
         self.alarmStatus.textColor = [UIColor redColor];
@@ -241,9 +296,9 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))
     
     NSUserDefaults *boolUserDefaults = [NSUserDefaults standardUserDefaults];
     
-    [boolUserDefaults setObject:[NSNumber numberWithBool:isItOn] forKey:@"state"];
+    [boolUserDefaults setObject:[NSNumber numberWithBool:_isItOn] forKey:@"state"];
     
-    NSNumber *num = [[NSNumber alloc]initWithBool:isItOn];
+    NSNumber *num = [[NSNumber alloc]initWithBool:_isItOn];
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:@"listening" object:num];
     
