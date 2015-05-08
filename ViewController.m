@@ -163,6 +163,8 @@
     });
      */
     
+    [super viewDidAppear:animated];
+    
     updateInterfaceThatNeedsConstantUpdatingCheckingWithoutDeadLocking(^{
         
         BOOL status = [CustomUtility checkHeadPhoneStatus];
