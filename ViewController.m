@@ -44,14 +44,14 @@
         [appDelegate.myLocationManager requestAlwaysAuthorization];
         // [appDelegate.myLocationManager requestWhenInUseAuthorization];
         //[appDelegate.myLocationManager startUpdatingLocation];
-    } else if (![CLLocationManager locationServicesEnabled]) {
+    } else if (![CLLocationManager locationServicesEnabled] && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined) {
         
         
         [CustomUtility displayMessage:@"Location Services Disabled. Please activate location services to use the app"
                             titleName:nil];
     }
     
-    if (!([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways)) {
+    if (([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)) {
         
         
         NSLog(@"Permission Denied");
@@ -93,33 +93,6 @@
         self.alarmStatus.text = @"Alarm is off";
         self.alarmStatus.textColor = [UIColor redColor];
     }
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        NSLog(@"Emeregency block from VC");
-        
-        while (true) {
-            
-            
-            //NSLog(@"This is going to be long...");
-            BOOL headPhoneStatus = [CustomUtility checkHeadPhoneStatus];
-            
-            if (headPhoneStatus == NO && currentState) {
-                
-                NSLog(@"Hello emer from VC");
-                
-                [appDelegate sendEmergencyRequest];
-                break;
-                
-            }
-            
-            
-            
-            
-        }
-    });
-
     
 
 }
@@ -231,6 +204,11 @@
             _switchState.enabled = YES;
         }
         
+        
+        
+        //NSLog(@"This is going to be long...");
+       // BOOL headPhoneStatus = [CustomUtility checkHeadPhoneStatus];
+        
     });
     
 }
@@ -290,8 +268,6 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))
         //appDelegate.myLocationManager = nil;
         
         [appDelegate.myLocationManager stopUpdatingLocation];
-        [appDelegate.myLocationManager stopMonitoringSignificantLocationChanges];
-        [appDelegate.myLocationManager stopUpdatingHeading];
     }
     
     NSUserDefaults *boolUserDefaults = [NSUserDefaults standardUserDefaults];

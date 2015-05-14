@@ -71,6 +71,8 @@ NSString *numberDenmark = @"45609946244083";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Fabric with:@[CrashlyticsKit]];
+    
     NSNotificationCenter *alert = [NSNotificationCenter defaultCenter];
     [alert addObserver:self selector:@selector(appIsListening:) name:@"listening" object:nil];
     
@@ -84,8 +86,7 @@ NSString *numberDenmark = @"45609946244083";
     }
  
   //  numbers = [[NSMutableArray alloc]initWithObjects:@"13104986862", @"18054608210", nil];
-    [Fabric with:@[CrashlyticsKit]];
-    return YES;
+       return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -227,6 +228,10 @@ NSString *numberDenmark = @"45609946244083";
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSUserDefaults *boolUserDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [boolUserDefaults setObject:[NSNumber numberWithBool:NO] forKey:@"state"];
+
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
