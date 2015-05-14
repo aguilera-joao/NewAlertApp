@@ -8,7 +8,11 @@
 
 #import "MessageViewController.h"
 
-@interface MessageViewController ()
+@interface MessageViewController () <UITextFieldDelegate>
+
+@property(weak, nonatomic) IBOutlet UIScrollView *scrollview;
+@property(weak, nonatomic) IBOutlet UITextField *textfield;
+@property(weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -17,11 +21,87 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    _textfield.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    [center addObserver:self selector:@selector(handleKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    [center addObserver:self selector:@selector(handleKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+-(void)handleKeyboardWillShow:(NSNotification *)paramNotification {
+    
+    NSDictionary *userInfo = paramNotification.userInfo;
+    
+    
+    NSValue *animationDurationObject = userInfo[UIKeyboardAnimationDurationUserInfoKey];
+    
+    NSValue *keyboardEndRectObject = userInfo[UIKeyboardFrameEndUserInfoKey];
+    
+    double animationDuration = 0.0f;
+    CGRect keyboardEndRect = CGRectMake(0.0f, 0.0f, 0.0f, 0.0f);
+    
+    
+    [animationDurationObject getValue:&animationDuration];
+    [keyboardEndRectObject getValue:&keyboardEndRect];
+    
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    keyboardEndRect = [self.view convertRect:keyboardEndRect fromView:window];
+    
+    CGRect intersectionOfKeyboardRectAndWindowRect= CGRectIntersection(self.view.frame, keyboardEndRect);
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        
+        self.scrollview.contentInset =
+        UIEdgeInsetsMake(0.0f,
+                         0.0f,
+                         intersectionOfKeyboardRectAndWindowRect.size.height,
+                         0.0f);
+    }];
+    
+    
+}
+
+-(void)handleKeyboardWillHide:(NSNotification *)paramSender {
+    
+    NSDictionary *userInfo = [paramSender userInfo];
+    
+    NSValue *animationDurationObject = [userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey];
+    
+    double animationDuration = 0.0f;
+    
+    [animationDurationObject getValue:&animationDuration];
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        
+        self.scrollview.contentInset = UIEdgeInsetsZero;
+    }];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 /*
