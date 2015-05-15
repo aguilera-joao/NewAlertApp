@@ -357,7 +357,7 @@ static NSMutableOrderedSet *_currentSet;
         
         UIImage *img = [[UIImage alloc]initWithData:contactImageData];
         
-        UIImage *compressed = [self compressForUpload:img scale:.1f];
+        UIImage *compressed = [self compressForUpload:img scale:.2f];
         
         UIImageView *contactPic = [[UIImageView alloc]initWithImage:compressed];
         
@@ -366,7 +366,6 @@ static NSMutableOrderedSet *_currentSet;
         [_contactSet addObject:cp];
         
 //        NSLog(@"%@", cp);
-        
         
     }
     
