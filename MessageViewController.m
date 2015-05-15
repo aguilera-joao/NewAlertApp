@@ -25,6 +25,14 @@
     
     _textfield.delegate = self;
     
+    BOOL fileExists = [[NSFileManager defaultManager]fileExistsAtPath:[CustomUtility messageFileLocation]];
+    
+    if (fileExists) {
+        
+        NSString *message = [NSKeyedUnarchiver unarchiveObjectWithFile:[CustomUtility messageFileLocation]];
+        
+        _textfield.text = [message copy];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
