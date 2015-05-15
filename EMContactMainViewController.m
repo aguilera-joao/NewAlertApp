@@ -352,13 +352,16 @@ static NSMutableOrderedSet *_currentSet;
         ABMultiValueRef lastName     = ABRecordCopyValue((ABRecordRef)CFBridgingRetain(person), kABPersonLastNameProperty);
         
         //get values
-      //  NSData *contactImageData = (__bridge NSData *)ABPersonCopyImageData((__bridge ABRecordRef)(person));
+        NSData *contactImageData = (__bridge NSData *)ABPersonCopyImageData((__bridge ABRecordRef)(person));
         NSArray *holdEachPersonMobileNumbers= (__bridge NSArray *)ABMultiValueCopyArrayOfAllValues(phoneNumbers);
         
-      //  UIImage *img = [[UIImage alloc]initWithData:contactImageData];
-      //  UIImageView *contactPic = [[UIImageView alloc]initWithImage:img];
+        UIImage *img = [[UIImage alloc]initWithData:contactImageData];
         
-        ContactPerson *cp = [[ContactPerson alloc]initWithFirstName:(__bridge NSString *)(firstName) LastName:(__bridge NSString *)(lastName) andPhonNumbers:[NSMutableSet setWithArray:holdEachPersonMobileNumbers] andContactPicture:nil];
+        UIImage *compressed = [self compressForUpload:img scale:.1f];
+        
+        UIImageView *contactPic = [[UIImageView alloc]initWithImage:compressed];
+        
+        ContactPerson *cp = [[ContactPerson alloc]initWithFirstName:(__bridge NSString *)(firstName) LastName:(__bridge NSString *)(lastName) andPhonNumbers:[NSMutableSet setWithArray:holdEachPersonMobileNumbers] andContactPicture:contactPic];
         
         [_contactSet addObject:cp];
         
@@ -368,6 +371,21 @@ static NSMutableOrderedSet *_currentSet;
     }
     
     
+}
+
+- (UIImage *)compressForUpload:(UIImage *)original scale:(CGFloat)scale
+{
+    // Calculate new size given scale factor.
+    CGSize originalSize = original.size;
+    CGSize newSize = CGSizeMake(originalSize.width * scale, originalSize.height * scale);
+    
+    // Scale the original image to match the new size.
+    UIGraphicsBeginImageContext(newSize);
+    [original drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage* compressedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return compressedImage;
 }
 
 
