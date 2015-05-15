@@ -24,7 +24,7 @@
                             <rect key="frame" x="150" y="538" width="300" height="30"/>
                             <color key="backgroundColor" red="0.91764712329999998" green="0.94901967050000002" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="344-ax-C72">
                             <rect key="frame" x="150" y="30" width="300" height="500"/>

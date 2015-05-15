@@ -189,9 +189,9 @@
 				6A04495F1AE1DA940060D933 /* EMContactMainViewController.h */,
 				6A0449601AE1DA940060D933 /* EMContactMainViewController.m */,
 				6A0449611AE1DA940060D933 /* EMContactSelctViewController.h */,
+				6A0449621AE1DA940060D933 /* EMContactSelctViewController.m */,
 				6A0449521AE1DA610060D933 /* ContactBaseTableViewController.h */,
 				6A0449501AE1DA570060D933 /* ContactBaseTableViewController.m */,
-				6A0449621AE1DA940060D933 /* EMContactSelctViewController.m */,
 				6A0449561AE1DA880060D933 /* ContactDetailViewController.h */,
 				6A0449571AE1DA880060D933 /* ContactDetailViewController.m */,
 			);

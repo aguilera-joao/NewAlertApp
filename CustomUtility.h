@@ -12,6 +12,7 @@
 @interface CustomUtility : NSObject
 
 +(NSString *)contactDataFileLocation;
++(NSString *)messageFileLocation;
 +(void)sortContactList:(NSMutableOrderedSet *)list;
 +(BOOL)checkHeadPhoneStatus;
 +(void) displayMessage:(NSString *)paramMessage titleName:(NSString *)title;

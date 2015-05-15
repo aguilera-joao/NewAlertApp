@@ -21,6 +21,18 @@
     return contactData;
 }
 
++(NSString *)messageFileLocation {
+    
+    
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *messageData = [documentsPath stringByAppendingPathComponent:@"message.data"];
+    
+    NSLog(@"Path is %@", messageData);
+    
+    return messageData;
+
+}
+
 +(void)sortContactList:(NSMutableOrderedSet *)list {
     
     [list sortUsingComparator:^NSComparisonResult(id per1, id per2) {

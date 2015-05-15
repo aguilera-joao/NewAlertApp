@@ -28,10 +28,11 @@ NSString *numberDenmark = @"45609946244083";
     UIBackgroundTaskIdentifier bgTask;
     BOOL isListening;
     BOOL _fileExists;
+    BOOL _messageFileExists;
     NSMutableArray *numbers;
     NSString *_address;
     NSString *_country;
-    
+    NSString *_message;
 }
 
 @end
@@ -102,12 +103,23 @@ NSString *numberDenmark = @"45609946244083";
     NSMutableOrderedSet *emergencyContacts = [[NSMutableOrderedSet alloc]init];
     
     _fileExists = [[NSFileManager defaultManager]fileExistsAtPath:[CustomUtility contactDataFileLocation]];
+    _messageFileExists = [[NSFileManager defaultManager]fileExistsAtPath:[CustomUtility messageFileLocation]];
+    
     
     if (_fileExists) {
         emergencyContacts = [NSKeyedUnarchiver unarchiveObjectWithFile:[CustomUtility contactDataFileLocation]];
     } else {
         
         NSLog(@"File exists");
+    }
+    
+    if (_messageFileExists) {
+        _message = [NSKeyedUnarchiver unarchiveObjectWithFile:[CustomUtility messageFileLocation]];
+        NSLog(@"Was able to load message");
+    } else {
+        
+        _message = @"No message written";
+        NSLog(@"No custom message file was found");
     }
     
   // __block NSURL *restURL = [NSURL URLWithString:kNexmo_APIKEY];
@@ -169,7 +181,11 @@ NSString *numberDenmark = @"45609946244083";
                         
                         NSLog(@"Phone number is %@", phoneNumberAsString);
                         
-                        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:[self createCustomMessage:_address]]];
+                        NSLog(@"Custom is message is [%@]", _message);
+                        
+                        NSString *customMessage = [NSString stringWithFormat:@"AlertApp: Location:%@ Custom Message:%@", _address, _message];
+                        
+                        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:[self createCustomMessage:customMessage]]];
                         NSURLRequest *myRequest = [NSURLRequest requestWithURL:qr];
                         
                         NSLog(@"URL is %@", myRequest);
@@ -340,7 +356,11 @@ NSString *numberDenmark = @"45609946244083";
         
         NSLog(@"Phone number is %@", phoneNumberAsString);
         
-        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:[self createCustomMessage:_address]]];
+        NSLog(@"Custom is message is [%@]", _message);
+        
+        NSString *customMessage = [NSString stringWithFormat:@"AlertApp: %@ %@", _address, _message];
+        
+        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:[self createCustomMessage:customMessage]]];
         NSURLRequest *myRequest = [NSURLRequest requestWithURL:qr];
         
         NSLog(@"URL is %@", myRequest);

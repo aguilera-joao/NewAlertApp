@@ -7,6 +7,7 @@
 //
 
 #import "MessageViewController.h"
+#import "CustomUtility.h"
 
 @interface MessageViewController () <UITextFieldDelegate>
 
@@ -23,6 +24,7 @@
     // Do any additional setup after loading the view from its nib.
     
     _textfield.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +83,8 @@
     
 }
 
+
+
 -(void)handleKeyboardWillHide:(NSNotification *)paramSender {
     
     NSDictionary *userInfo = [paramSender userInfo];
@@ -101,8 +105,23 @@
     
     [textField resignFirstResponder];
     
+    NSString *messageFile = [CustomUtility messageFileLocation];
+    
+    NSLog(@"Text data is [%@]", textField.text);
+    
+    BOOL success = [NSKeyedArchiver archiveRootObject:textField.text toFile:messageFile];
+    
+    if (success) {
+        NSLog(@"Was able to save message");
+    } else {
+        
+        NSLog(@"was able to save message");
+    }
+    
     return YES;
 }
+
+
 
 /*
 #pragma mark - Navigation
