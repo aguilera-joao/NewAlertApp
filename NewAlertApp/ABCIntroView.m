@@ -219,7 +219,7 @@
     [view addSubview:imageview];
     
     UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width*.1, self.frame.size.height*.7, self.frame.size.width*.8, 60)];
-    descriptionLabel.text = [NSString stringWithFormat:@"This is going to be a very long explaination. Blah blah blah my app is so awesome!!!!"];
+    descriptionLabel.text = [NSString stringWithFormat:@"This is going to be a very long explaination. Blah blah blah this app is so awesome!!!!"];
     descriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:18.0];
     descriptionLabel.textColor = [UIColor whiteColor];
     descriptionLabel.textAlignment =  NSTextAlignmentCenter;
