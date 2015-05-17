@@ -127,6 +127,7 @@ static NSMutableOrderedSet *_currentSet;
      [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     ContactDetailViewController *dv = [[ContactDetailViewController alloc]init];
+    dv.contact = person;
     
     [self.navigationController pushViewController:dv
                                          animated:YES];

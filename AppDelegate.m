@@ -85,6 +85,8 @@ NSString *numberDenmark = @"45609946244083";
 
         self.myLocationManager.delegate = self;
     }
+    
+     
  
   //  numbers = [[NSMutableArray alloc]initWithObjects:@"13104986862", @"18054608210", nil];
        return YES;
@@ -185,7 +187,13 @@ NSString *numberDenmark = @"45609946244083";
                         
                         NSString *customMessage = [NSString stringWithFormat:@"AlertApp: Location:%@ Custom Message:%@", _address, _message];
                         
-                        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:[self createCustomMessage:customMessage]]];
+                        
+                        
+                        NSString *encodedMessage = [customMessage stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                        
+                        NSString *lEn = [encodedMessage lowercaseString];
+                        
+                        NSURL *qr = [NSURL URLWithString:[self createAPIKeyForNumber:phoneNumberAsString withMessage:lEn]];
                         NSURLRequest *myRequest = [NSURLRequest requestWithURL:qr];
                         
                         NSLog(@"URL is %@", myRequest);

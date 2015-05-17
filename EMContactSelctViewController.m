@@ -81,13 +81,7 @@
     
     EMContactMainViewController *m = [[EMContactMainViewController alloc]init];
     m.EMList = (NSMutableArray *)[_EMList array];
-    
-  //  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        // Add code here to do background processing
-        //
-        //
-        
-   //     runOnMainQueueWithoutDeadlocking2(^{
+
         
         NSString *docFile = [CustomUtility contactDataFileLocation];
         //save data
@@ -102,9 +96,7 @@
         } else {
             NSLog(@"Was NOT able to save data");
         }
-  //      });
- //   });
-       
+
   
     
 }

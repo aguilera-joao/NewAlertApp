@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 iOSDev. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface MessageViewController : ViewController
+@interface MessageViewController : UIViewController
 
 @end

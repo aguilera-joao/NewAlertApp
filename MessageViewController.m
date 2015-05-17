@@ -33,6 +33,9 @@
         
         _textfield.text = [message copy];
     }
+    
+    self.scrollview.contentInset = UIEdgeInsetsZero;
+    self.scrollview.scrollIndicatorInsets = UIEdgeInsetsZero;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,6 +109,7 @@
     [UIView animateWithDuration:animationDuration animations:^{
         
         self.scrollview.contentInset = UIEdgeInsetsZero;
+       // self.scrollview.scrollIndicatorInsets = UIEdgeInsetsZero;
     }];
 }
 
@@ -125,6 +129,11 @@
         
         NSLog(@"was able to save message");
     }
+    
+    NSString *en = [textField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *s  = [en lowercaseString];
+    
+    NSLog(@"Web format is %@", en);
     
     return YES;
 }

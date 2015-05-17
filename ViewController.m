@@ -10,12 +10,15 @@
 #import "HeadPhones.h"
 #import "AppDelegate.h"
 #import "CustomUtility.h"
+#import "ABCIntroView.h"
 
 
-@interface ViewController () {
+@interface ViewController () <ABCIntroViewDelegate> {
     
    AppDelegate *appDelegate;
 }
+
+@property (nonatomic, strong) ABCIntroView *introView;
 @property (weak, nonatomic) IBOutlet UISwitch *switchState;
 @property (strong, nonatomic) CLGeocoder *myGeocoder;
 @property (strong, nonatomic) CLLocation *location;
@@ -28,9 +31,35 @@
 
 @implementation ViewController
 
+
+#pragma mark - ABCIntroViewDelegate Methods
+
+-(void)onDoneButtonPressed{
+    
+    //    Uncomment so that the IntroView does not show after the user clicks "DONE"
+    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    [defaults setObject:@"YES"forKey:@"intro_screen_viewed"];
+    //    [defaults synchronize];
+    
+    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.introView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.introView removeFromSuperview];
+    }];
+}
+
 - (void)viewDidLoad {
    
     [super viewDidLoad];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"intro_screen_viewed"]) {
+        self.introView = [[ABCIntroView alloc] initWithFrame:self.view.frame];
+        self.introView.delegate = self;
+        self.introView.backgroundColor = [UIColor greenColor];
+        [self.view addSubview:self.introView];
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"intro_screen_viewed"];
+    }
 
     
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];

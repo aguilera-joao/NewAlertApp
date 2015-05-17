@@ -25,6 +25,7 @@
 		6A0449791AE1DA940060D933 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A04496D1AE1DA940060D933 /* ViewController.m */; };
 		6A0688AE1AF9A51500EE9456 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0688AC1AF9A51500EE9456 /* Fabric.framework */; };
 		6A0688AF1AF9A51500EE9456 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0688AD1AF9A51500EE9456 /* Crashlytics.framework */; };
+		6A3573251B08629800B7F6A3 /* ABCIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3573241B08629800B7F6A3 /* ABCIntroView.m */; };
 		6A43A84C1AE1D2E800888E04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A43A84B1AE1D2E800888E04 /* main.m */; };
 		6A43A8551AE1D2E800888E04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A43A8531AE1D2E800888E04 /* Main.storyboard */; };
 		6A43A8571AE1D2E800888E04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A43A8561AE1D2E800888E04 /* Images.xcassets */; };
@@ -76,6 +77,8 @@
 		6A04496D1AE1DA940060D933 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../ViewController.m; sourceTree = "<group>"; };
 		6A0688AC1AF9A51500EE9456 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		6A0688AD1AF9A51500EE9456 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		6A3573231B08629800B7F6A3 /* ABCIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCIntroView.h; sourceTree = "<group>"; };
+		6A3573241B08629800B7F6A3 /* ABCIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCIntroView.m; sourceTree = "<group>"; };
 		6A43A8461AE1D2E800888E04 /* NewAlertApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewAlertApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A43A84A1AE1D2E800888E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A43A84B1AE1D2E800888E04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -111,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A3573261B08629C00B7F6A3 /* Intro Screen */ = {
+			isa = PBXGroup;
+			children = (
+				6A3573231B08629800B7F6A3 /* ABCIntroView.h */,
+				6A3573241B08629800B7F6A3 /* ABCIntroView.m */,
+			);
+			name = "Intro Screen";
+			sourceTree = "<group>";
+		};
 		6A43A83D1AE1D2E800888E04 = {
 			isa = PBXGroup;
 			children = (
@@ -137,10 +149,10 @@
 				6A0688AC1AF9A51500EE9456 /* Fabric.framework */,
 				6A0688AD1AF9A51500EE9456 /* Crashlytics.framework */,
 				6AB31EDB1AE1F6CA00D27BDF /* Util */,
+				6A3573261B08629C00B7F6A3 /* Intro Screen */,
 				6AB31ED91AE1F6AD00D27BDF /* Message */,
 				6AB31ED81AE1F69300D27BDF /* TableCell */,
 				6AB31ED71AE1F65900D27BDF /* ContactTable */,
-				6A0449591AE1DA940060D933 /* ContactDetailViewController.xib */,
 				6A0449681AE1DA940060D933 /* ResultsViewController.h */,
 				6A0449691AE1DA940060D933 /* ResultsViewController.m */,
 				6A04496C1AE1DA940060D933 /* ViewController.h */,
@@ -181,6 +193,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6A68A4221B06A5B700EB8705 /* Contact Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6A0449561AE1DA880060D933 /* ContactDetailViewController.h */,
+				6A0449571AE1DA880060D933 /* ContactDetailViewController.m */,
+				6A0449591AE1DA940060D933 /* ContactDetailViewController.xib */,
+			);
+			name = "Contact Detail";
+			sourceTree = "<group>";
+		};
 		6AB31ED71AE1F65900D27BDF /* ContactTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,8 +214,7 @@
 				6A0449621AE1DA940060D933 /* EMContactSelctViewController.m */,
 				6A0449521AE1DA610060D933 /* ContactBaseTableViewController.h */,
 				6A0449501AE1DA570060D933 /* ContactBaseTableViewController.m */,
-				6A0449561AE1DA880060D933 /* ContactDetailViewController.h */,
-				6A0449571AE1DA880060D933 /* ContactDetailViewController.m */,
+				6A68A4221B06A5B700EB8705 /* Contact Detail */,
 			);
 			name = ContactTable;
 			sourceTree = "<group>";
@@ -361,6 +382,7 @@
 				6A04496F1AE1DA940060D933 /* ContactTableViewCell.m in Sources */,
 				6A04494F1AE1DA030060D933 /* AppDelegate.m in Sources */,
 				6A0449781AE1DA940060D933 /* SettingsTableViewController.m in Sources */,
+				6A3573251B08629800B7F6A3 /* ABCIntroView.m in Sources */,
 				6A43A84C1AE1D2E800888E04 /* main.m in Sources */,
 				6A0449731AE1DA940060D933 /* EMContactSelctViewController.m in Sources */,
 				6A0449711AE1DA940060D933 /* CustomUtility.m in Sources */,

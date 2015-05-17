@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContactPerson.h"
 
 @interface ContactDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
+@property (strong, nonatomic) ContactPerson *contact;
 
 @end
