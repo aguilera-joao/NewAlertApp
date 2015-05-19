@@ -167,6 +167,7 @@ void runOnMainQueueWithoutDeadlocking2(void (^block)(void))
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tableView reloadData];
     
 }
 
@@ -260,6 +261,7 @@ void runOnMainQueueWithoutDeadlocking2(void (^block)(void))
     ResultsViewController *tableController = (ResultsViewController *)self.searchController.searchResultsController;
     tableController.filteredResults = searchResults;
     [tableController.tableView reloadData];
+    [self.tableView reloadData];
    
 }
 

@@ -64,6 +64,9 @@ NSString *const kTableCellNibName = @"ContactTableViewCell";
     //else use the default picture in ContactTableViewCell class
     if (person.contactPicture.image) {
         cell.contactPic.image = person.contactPicture.image;
+    } else {
+        
+        cell.contactPic.image = [UIImage imageNamed:@"BackgroundImage"];
     }
 
     

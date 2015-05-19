@@ -20,7 +20,7 @@
     self.contactPic.clipsToBounds = YES;
     
     self.selectionStyle = UITableViewCellSelectionStyleBlue;
-    
+    self.accessoryType = UITableViewCellAccessoryNone;
     
 }
 
