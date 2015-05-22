@@ -34,6 +34,8 @@
     [self initSearchBar];
     
     self.title = @"Contacts";
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -199,6 +201,8 @@ void runOnMainQueueWithoutDeadlocking2(void (^block)(void))
 
 - (void)willPresentSearchController:(UISearchController *)searchController {
     // do something before the search controller is presented
+    //[self.tableView reloadData];
+    
 }
 
 - (void)didPresentSearchController:(UISearchController *)searchController {
@@ -207,16 +211,21 @@ void runOnMainQueueWithoutDeadlocking2(void (^block)(void))
 
 - (void)willDismissSearchController:(UISearchController *)searchController {
     // do something before the search controller is dismissed
-    [self.tableView reloadData];
+  //  [self.tableView reloadData];
 }
 
 - (void)didDismissSearchController:(UISearchController *)searchController {
     // do something after the search controller is dismissed
+    //[self.tableView reloadData];
 }
 
 #pragma mark - UISearchResultsUpdating
 
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    
+   ResultsViewController *tableController = (ResultsViewController *)self.searchController.searchResultsController;
+    
+    [tableController.tableView reloadData];
     
     NSString *searchText = searchController.searchBar.text;
     NSMutableArray *searchResults = [_contactList mutableCopy];
@@ -250,6 +259,7 @@ void runOnMainQueueWithoutDeadlocking2(void (^block)(void))
         NSCompoundPredicate *orMatchPredicates = [NSCompoundPredicate orPredicateWithSubpredicates:searchItemsPredicate];
         [andMatchPredicates addObject:orMatchPredicates];
         
+       // [tableController.tableView reloadData];
     }
     
     NSCompoundPredicate *finalCompoundPredicate =
@@ -258,11 +268,10 @@ void runOnMainQueueWithoutDeadlocking2(void (^block)(void))
     
     NSLog(@"Search results are %@", searchResults);
     
-    ResultsViewController *tableController = (ResultsViewController *)self.searchController.searchResultsController;
+    //ResultsViewController *tableController = (ResultsViewController *)self.searchController.searchResultsController;
     tableController.filteredResults = searchResults;
     [tableController.tableView reloadData];
-    [self.tableView reloadData];
-   
+    
 }
 
 

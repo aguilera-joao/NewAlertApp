@@ -17,7 +17,7 @@ extern NSString *const kCellIdentifier;
 @property (nonatomic, strong) NSArray *data;
 
 -(void)configureCell:(ContactTableViewCell *)cell forContactPerson:(ContactPerson *)person;
-
+-(void)configureCell:(ContactTableViewCell *)cell forContactPerson:(ContactPerson *)person includeCheckMark:(BOOL)contains;
 
 
 @end

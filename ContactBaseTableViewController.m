@@ -8,7 +8,7 @@
 
 #import "ContactBaseTableViewController.h"
 #import "ResultsViewController.h"
-
+#import "CustomUtility.h"
 @interface ContactBaseTableViewController ()
 
 @end
@@ -28,13 +28,15 @@ NSString *const kTableCellNibName = @"ContactTableViewCell";
                                  nibWithNibName:kTableCellNibName
                                  bundle:[NSBundle mainBundle]]
                                  forCellReuseIdentifier:kCellIdentifier];
+    
+    
 }
 
 
 -(void)configureCell:(ContactTableViewCell *)cell forContactPerson:(ContactPerson *)person {
 
- 
-        
+    
+    
     if (person.firstName != nil && person.lastName != nil) {
         
         cell.nameTextLabel.text = person.name;
@@ -68,10 +70,23 @@ NSString *const kTableCellNibName = @"ContactTableViewCell";
         
         cell.contactPic.image = [UIImage imageNamed:@"BackgroundImage"];
     }
-
+  
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
 }
 
+-(void)configureCell:(ContactTableViewCell *)cell forContactPerson:(ContactPerson *)person includeCheckMark:(BOOL)contains{
+    
+    [self configureCell:cell forContactPerson:person];
+    
+    if (contains == YES) {
+        
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+}
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
