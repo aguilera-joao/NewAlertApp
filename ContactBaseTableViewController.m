@@ -68,7 +68,7 @@ NSString *const kTableCellNibName = @"ContactTableViewCell";
         cell.contactPic.image = person.contactPicture.image;
     } else {
         
-        cell.contactPic.image = [UIImage imageNamed:@"BackgroundImage"];
+        cell.contactPic.image = [UIImage imageNamed:@"icon-ios7-contact-outline-512"];
     }
   
     cell.accessoryType = UITableViewCellAccessoryNone;
